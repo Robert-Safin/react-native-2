@@ -3,11 +3,10 @@ import { Pressable, Text, View } from "react-native";
 
 interface Props {
   title: string;
+  action: () => void;
 }
 
-
 const PrimaryButton: FC<Props> = (props) => {
-
   const [isPressed, setIsPressed] = useState(false);
 
   return (
@@ -16,19 +15,20 @@ const PrimaryButton: FC<Props> = (props) => {
         borderRadius: 28,
         margin: 4,
         overflow: "hidden",
+        flex: 1,
       }}
     >
       <Pressable
         android_ripple={{
-          color: "lime",
+          color: "pink",
         }}
         style={({ pressed }) => ({
-          backgroundColor: 'black',
+          backgroundColor: "black",
           opacity: pressed ? 0.5 : 1,
           paddingVertical: 8,
           paddingHorizontal: 16,
         })}
-                onPress={() => console.log("pressed")}
+        onPress={() => props.action()}
       >
         <Text
           style={{
