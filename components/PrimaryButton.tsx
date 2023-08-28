@@ -3,7 +3,7 @@ import { Pressable, Text, View } from "react-native";
 
 interface Props {
   title: string;
-  action: () => void;
+  action: (direction?:any) => any;
 }
 
 const PrimaryButton: FC<Props> = (props) => {

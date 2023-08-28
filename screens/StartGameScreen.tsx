@@ -2,7 +2,12 @@ import { FC, useState } from "react";
 import { TextInput, View, Alert } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
 
-const GameStartScreen: FC = (props) => {
+interface Props {
+  obtainPickedNumber: (pickedNumber: number) => void;
+}
+
+
+const GameStartScreen: FC<Props> = (props) => {
   const [enteredNumber, setEnteredNumber] = useState<string>("");
 
   const validateEntry = () => {
@@ -24,7 +29,7 @@ const GameStartScreen: FC = (props) => {
       ]);
       return;
     }
-    console.log("Valid");
+    props.obtainPickedNumber(parseInt(enteredNumber));
   };
 
   const resetGame = () => {
